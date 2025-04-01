@@ -1,45 +1,41 @@
 # node-python-websocket
 
-## General Information
+## Overview
 
-Test project where we create a server with native Node.js and use a Python client to send live invoices using WebSockets.
+This project demonstrates real-time invoice transmission using WebSockets. It consists of a **native Node.js server** and a **Python client** that communicate through WebSockets. The data is stored in an **SQL Server** database, either locally or in the cloud.
 
-## Requirements
+## Prerequisites
 
-- You must have Node.js installed
-- You must have Python installed
-- You need SQL Server or a cloud instance of this database
+Ensure you have the following installed before proceeding:
 
-## Clone the Project
+- [Node.js](https://nodejs.org/)
+- [Python](https://www.python.org/)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/) (local instance or cloud-hosted)
+
+## Installation
+
+### Clone the Repository
+
+To get started, clone the repository:
 
 ```bash
-git clone https://github.com/itsronalds/node-python-websocket
+git clone https://github.com/itsronalds/node-python-websocket.git
 ```
 
 ## Setting Up the Node.js Server
 
 ### Install Dependencies
 
-In the project root, first navigate to the `server` folder using:
+Navigate to the `server` directory and install dependencies:
 
 ```bash
 cd server
+npm install
 ```
-
-Then, run the following command:
-
-```bash
-npm i
-```
-
-> This will install all the server dependencies
 
 ### Configure Environment Variables
 
-Our project has two environment variables:
-
-- PORT: the port where our server will run
-- MSSQL_CONNECTION_STRING: the connection string to the database hosted on Azure. `You can use a local database, the model is in db/model.sql`
+Create a `.env` file in the `server` directory and define the required variables:
 
 ```bash
 # File: .env
@@ -48,59 +44,53 @@ PORT=8000
 MSSQL_CONNECTION_STRING=Server=server_name,port;Database=database_name;User Id=user;Password=password;Encrypt=true
 ```
 
-> Replace `server_name`, `port`, `database_name`, `user`, and `password` with the correct values for your database
+> **Note:** Replace `server_name`, `port`, `database_name`, `user`, and `password` with your actual database credentials.
 
-### Run the Server
+### Start the Server
 
-After completing the previous steps, the only thing left is to start the server:
+Once everything is set up, start the server:
 
 ```bash
 npm start
 ```
 
-## Set Up the Python Client
+## Setting Up the Python Client
 
-### Create a Virtual Environment
+### Create and Activate a Virtual Environment
 
-In the project root, first navigate to the `client` folder using:
+Navigate to the `client` directory and set up a virtual environment:
 
 ```bash
 cd client
-```
-
-Then, run the following command to create the virtual environment:
-
-```bash
 python -m venv venv
 ```
 
-> You'll see a folder named `venv`, which will store our dependencies
-
-### Activate the Virtual Environment
-
-In the `client` folder, run the following command:
+Activate the virtual environment:
 
 ```bash
 # On Windows
-venv\scripts\activate
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
 ```
 
 ### Install Dependencies
 
-Now, with `venv` active, it's time to install our dependencies:
+With the virtual environment activated, install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> This will install all the client dependencies
-
 ### Run the Client
 
-After completing the previous steps, the only thing left is to start the client:
+Start the Python client by running:
 
 ```bash
-py main.py
+python main.py
 ```
 
-## Everything should work fine 🚀
+## Expected Outcome 🚀
+
+After completing the above steps, the Node.js server should be running, and the Python client should be able to send real-time invoices via WebSockets.
